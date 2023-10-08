@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: xiu
+  labels:
+    {{- include "xiu.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 1935
+      targetPort: 1935
+      protocol: TCP
+      name: rtmp
+    - port: 1936
+      targetPort: 1936
+      protocol: TCP
+      name: rtsp
+    - port: 1937
+      targetPort: 1937
+      protocol: TCP
+      name: webrtc
+    - port: 1938
+      targetPort: 1938
+      protocol: TCP
+      name: httpflv
+    - port: 1939
+      targetPort: 1939
+      protocol: TCP
+      name: hls
+  selector:
+    {{- include "xiu.selectorLabels" . | nindent 4 }}

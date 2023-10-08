@@ -14,3 +14,5 @@ clean:
 	cargo clean
 build:
 	cargo build
+docker:
+	docker build --platform=linux/amd64 -t asyncio/xiu:0.9.1 . && docker push asyncio/xiu:0.9.1
